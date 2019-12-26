@@ -2,6 +2,7 @@ import React,{Component,Fragment} from 'react'
 import XiaojeijieItem from './XiaojiejieItem'
 
 class Xioajiejie extends Component {
+    // initialization            setup props and state
     constructor(props) {
         super(props)
         this.state = {
@@ -10,15 +11,45 @@ class Xioajiejie extends Component {
         }
     }
 
+    // Mounting    componentWillMount    render    componentDidMount
+    componentDidMount(){
+        console.log('componentDidMount---------组件将要挂载到页面的时刻')
+    }
+
+    componentDidMount(){
+        console.log('componentDidMount---------组件挂载完成的时刻')
+    }
+
+    //Updation两种形式： A：props:  componenetWillReceiveProps  shouldComponentUpdata  componentWillUpdata  render  componentDidUpdate
+    //                  B:states： shouldComponentUpdata(返回要有返回值true或者false)  componentWillUpdate  render  componenetDidUpdata 
+
+    shouldComponentUpdate(){
+        console.log('1---shouldComponentUpdate----组件在挂载前')
+        return false
+    }
+
+    componentWillUpdate(){
+        console.log('2----componentWillUpdate---组件在挂载前')
+    }
+
+    componenetDidUpdata(){
+        console.log('4---componenetDidUpdata---组件挂载完成之后')
+    }
+
     render() {
+        console.log('render--------------组件挂载中')
         return (
             <Fragment>
                 <div>
                     <label htmlFor="jspang">增加服务：</label>
-                    <input value={this.state.inputValue}  onChange={this.inputChange.bind(this)} />
+                    <input 
+                        value={this.state.inputValue}  
+                        onChange={this.inputChange.bind(this)} 
+                        ref = {(input) =>{this.input=input}}
+                    />
                     <button onClick={this.addList.bind(this)}>增加服务</button>
                 </div>
-                <ul>
+                <ul ref={(ul)=>{this.ul=ul}}>
                     {
                         this.state.list.map((item,index)=>{
                             return (
@@ -41,7 +72,8 @@ class Xioajiejie extends Component {
         //console.log(this)
         //this.state.inputValue = e.target.value
         this.setState({
-            inputValue: e.target.value
+            // inputValue: e.target.value
+            inputValue: this.input.value
         })
     }
 
@@ -50,6 +82,8 @@ class Xioajiejie extends Component {
         this.setState({
             list:[...this.state.list,this.state.inputValue],
             inputValue: ''
+        },()=>{
+            console.log(this.ul.querySelectorAll('li').length)
         })
     }
 
