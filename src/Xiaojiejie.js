@@ -1,5 +1,8 @@
 import React,{Component,Fragment} from 'react'
+import axios from 'axios'
 import XiaojeijieItem from './XiaojiejieItem'
+import './style.css'
+import Boss from './Boss'
 
 class Xioajiejie extends Component {
     // initialization            setup props and state
@@ -9,6 +12,17 @@ class Xioajiejie extends Component {
             inputValue: '',
             list: ['JFK了撒法','附件两款都是']
         }
+    }
+
+    // 但你调用接口的时候,最好在这个生命周期
+    componentWillMount(){
+        axios.post()    //网址
+            .then((res)=>{
+                console.log('axios获取数据成功:'+JSON.stringify(res))
+            })     //回调函数
+            .catch((error)=>{
+                console.log('axios 获取数据失败:' + error)
+            })
     }
 
     // Mounting    componentWillMount    render    componentDidMount
@@ -64,6 +78,7 @@ class Xioajiejie extends Component {
                         })
                     }
                 </ul>
+                <Boss />
             </Fragment>
         )
     }
