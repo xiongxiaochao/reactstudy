@@ -14,44 +14,7 @@ class Xioajiejie extends Component {
         }
     }
 
-    // 但你调用接口的时候,最好在这个生命周期
-    componentWillMount(){
-        axios.post()    //网址
-            .then((res)=>{
-                console.log('axios获取数据成功:'+JSON.stringify(res))
-            })     //回调函数
-            .catch((error)=>{
-                console.log('axios 获取数据失败:' + error)
-            })
-    }
-
-    // Mounting    componentWillMount    render    componentDidMount
-    componentDidMount(){
-        console.log('componentDidMount---------组件将要挂载到页面的时刻')
-    }
-
-    componentDidMount(){
-        console.log('componentDidMount---------组件挂载完成的时刻')
-    }
-
-    //Updation两种形式： A：props:  componenetWillReceiveProps  shouldComponentUpdata  componentWillUpdata  render  componentDidUpdate
-    //                  B:states： shouldComponentUpdata(返回要有返回值true或者false)  componentWillUpdate  render  componenetDidUpdata 
-
-    shouldComponentUpdate(){
-        console.log('1---shouldComponentUpdate----组件在挂载前')
-        return false
-    }
-
-    componentWillUpdate(){
-        console.log('2----componentWillUpdate---组件在挂载前')
-    }
-
-    componenetDidUpdata(){
-        console.log('4---componenetDidUpdata---组件挂载完成之后')
-    }
-
     render() {
-        console.log('render--------------组件挂载中')
         return (
             <Fragment>
                 <div>
