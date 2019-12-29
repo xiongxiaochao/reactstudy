@@ -1,6 +1,6 @@
 import React,{Component,Fragment} from 'react'
 import axios from 'axios'
-import XiaojeijieItem from './XiaojiejieItem'
+import XiaojiejieItem from './XiaojiejieItem'
 import './style.css'
 import Boss from './Boss'
 
@@ -30,7 +30,7 @@ class Xioajiejie extends Component {
                     {
                         this.state.list.map((item,index)=>{
                             return (
-                                <XiaojeijieItem 
+                                <XiaojiejieItem 
                                 content={item}
                                 index={index}
                                 deleteItem={this.deleteItem.bind(this)}  
